@@ -1,4 +1,4 @@
-import style from "../Drones.module.css"
+import style from "../drones.module.css"
 
 const Drone = ({droneObject}) => {
     const pilot = droneObject.pilot

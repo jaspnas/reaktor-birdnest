@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import Drone from "./Drone.js"
-import style from "../Drones.module.css"
+import styles from "../drones.module.css"
 
 
 const updateData = (data, update) => {
@@ -56,7 +56,7 @@ const DroneList = () => {
     if (!data) return (<div>Loading...</div>)
     return (
         <div>
-            <ul className={style.droneList}>
+            <ul className={styles.droneList}>
                 {data.map((drone) => {
                     return (
                         <Drone key={drone.serial_number} droneObject={drone}/>

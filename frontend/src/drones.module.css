@@ -1,7 +1,9 @@
-.drone-list {
+.droneList {
 text-align: center;
+  list-style-type: none;
 }
 
 .drone {
   list-style-type: none;
+  text-align: center;
 }
