@@ -4,7 +4,7 @@ const Drone = ({droneObject}) => {
     const pilot = droneObject.pilot
     return (
         <li className={style.drone}>
-        <div className={style.drone}>
+        <div className={style.droneDiv}>
             <h3>Drone details:</h3>
             <p>Serial number: {droneObject.serial_number}</p>
             <p>Last seen: {droneObject.last_seen}</p>

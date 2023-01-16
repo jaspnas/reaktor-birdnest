@@ -4,7 +4,7 @@ import DroneList from "./components/DroneList.js";
 function App() {
     return (
         <div className="App">
-            <h1>Drones</h1>
+            <h1>Drones found in area:</h1>
             <DroneList/>
         </div>
     );

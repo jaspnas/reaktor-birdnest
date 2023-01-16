@@ -1,9 +1,20 @@
 .droneList {
-text-align: center;
+  align-content: center;
+  justify-content: center;
   list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .drone {
-  list-style-type: none;
+  align-content: center;
+  justify-content: center;
   text-align: center;
+  padding: 1%;
+  width: 30%;
+}
+
+.droneDiv {
+  width: 100%;
 }
