@@ -9,7 +9,7 @@ const Drone = ({droneObject}) => {
             <p>Serial number: {droneObject.serial_number}</p>
             <p>Last seen: {droneObject.last_seen}</p>
             <p>Closest Distance: {Math.round(droneObject.closest_distance/1000)} m</p>
-            <h5>Pilot details:</h5>
+            <h4 className={style.hdg}>Pilot details:</h4>
             <p>Name: {pilot.name}</p>
             <p>Email: {pilot.email}</p>
             <p>Phone number: {pilot.phone_number}</p>
