@@ -9,6 +9,8 @@ Hosted version will be up at https://reaktorbirdnest.jaspnas.com for a limited t
 get certificates from CA (e.g. letsencrypt) or run the following command 
 `openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 && openssl rsa -passin pass:x -in server.pass.key -out key.pem && rm server.pass.key && openssl req -new -key key.pem -out server.csr -subj "/C=FI/ST=Turku/L=Turku/O=JaspnasCom/OU=IT Department/CN=reaktorbirdnest.jaspnas.com" && openssl x509 -req -days 100 -in server.csr -signkey key.pem -out cert.crt` to generate a self-signed certificate.
 
+Put the cert and key into `/root/reaktorbirdnest.jaspnas.com.crt` and `/root/reaktorbirdnest.jaspnas.com-key.pem`
+
 `docker compose up -d` in the root directory
 
 ## Description
