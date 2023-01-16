@@ -1,0 +1,51 @@
+services:
+  backend:
+    restart: always
+    build: ./backend
+    networks:
+      birdnestnetwork:
+        ipv4_address: 172.16.0.20
+
+  mongo:
+    image: mongo:4.4.18
+    restart: always
+    volumes:
+      - birdnest-mongo-data:/mongo/db
+    networks:
+      birdnestnetwork:
+        ipv4_address: 172.16.0.10
+
+  frontend: 
+    build: 
+      context: ./frontend
+      args:
+        - WEBSITE_DOMAIN=reaktorbirdnest.jaspnas.com
+    restart: always
+    networks:
+      birdnestnetwork:
+        ipv4_address: 172.16.0.30
+
+  yxorp:
+    image: nginx:stable-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./reverse-proxy.conf:/etc/nginx/nginx.conf:ro"
+      - "./cert.crt:/root/cert.crt:ro"
+      - "./key.pem:/root/key.pem:ro"
+    networks:
+      birdnestnetwork:
+        ipv4_address: 172.16.0.5
+
+volumes:
+  birdnest-mongo-data:
+
+networks:
+  birdnestnetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24

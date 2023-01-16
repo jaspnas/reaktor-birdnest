@@ -1,0 +1,13 @@
+{
+  "port": 8080,
+
+  "db_url": "db.reaktorbirdnest.jaspnas.com:27017",
+  "db_uname": "root",
+  "db_pass": "example",
+  "db_name": "birdnest",
+  "drone_collection": "drones",
+
+  "grid_size": 500000,
+  "bird_pos": [250000, 250000],
+  "no_fly": 100000
+}

@@ -1,0 +1,7 @@
+# Config files for jetbrains
+.idea
+
+*.cert
+*.crt
+*.pem
+*.csr
