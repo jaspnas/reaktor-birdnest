@@ -5,8 +5,8 @@ import (
 	"context"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
+	"math"
 	"time"
 )
 
@@ -28,14 +28,23 @@ func addDrone(collection *mongo.Collection, drone common.StoredDrone) {
 	if err != nil {
 		_, err2 := collection.InsertOne(context.TODO(), drone)
 		if err2 != nil {
-			return
+			log.Println(err)
 		}
+		return
+	}
+
+	// Calculate closest distance
+	var min float64
+	if temp.ClosestDistance == 0 {
+		min = drone.ClosestDistance
+	} else {
+		min = math.Min(drone.ClosestDistance, temp.ClosestDistance)
 	}
 
 	update := bson.M{"$set": bson.M{
-		"closest_distance": bson.M{"$min": []float64{drone.ClosestDistance, temp.ClosestDistance}},
+		"closest_distance": min,
 		"last_seen":        drone.LastSeen,
 	}}
 
-	collection.FindOneAndUpdate(context.TODO(), filter, update, options.FindOneAndUpdate().SetUpsert(true))
+	collection.FindOneAndUpdate(context.TODO(), filter, update)
 }
